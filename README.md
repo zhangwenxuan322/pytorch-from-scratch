@@ -67,18 +67,36 @@ Useful debugging habits:
 
 ## Setup
 
-Create an environment however you prefer, then install PyTorch from the official selector:
-
-- [PyTorch Get Started](https://pytorch.org/get-started/locally/)
-
-Example with pip on macOS CPU/MPS:
+Use the project conda environment:
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install --upgrade pip
-pip install torch torchvision torchaudio jupyter matplotlib
+conda activate pytorch-from-scratch
 ```
+
+If the environment does not exist yet, create it and install the project requirements:
+
+```bash
+conda create -n pytorch-from-scratch python=3.11
+conda activate pytorch-from-scratch
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+Register the environment as a Jupyter kernel:
+
+```bash
+python -m ipykernel install --user --name pytorch-from-scratch --display-name "Python (pytorch-from-scratch)"
+```
+
+Check PyTorch and Apple Silicon MPS support:
+
+```bash
+python -c "import torch; print(torch.__version__); print(torch.backends.mps.is_available())"
+```
+
+For other platforms, use the official PyTorch selector if you need a different install command:
+
+- [PyTorch Get Started](https://pytorch.org/get-started/locally/)
 
 Run notebooks:
 
